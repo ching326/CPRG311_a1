@@ -1,0 +1,39 @@
+About MinMax Sort:
+This sorting algorithm is a modified version of selection sort, which tries to reduce the sorting duration
+by finding both maximum and minimun value at each sorting iteration.
+
+
+Steps of the algorithm:
+
+Step 1: Read the array input
+
+for (int i = 0, j = n - 1; i < j; i++, j--) 
+Shape min = shapes[i], max = shapes[i];
+int min_i = i, max_i = i;
+
+Step 2: Find the min and max value for each pass
+
+for (int k = i; k <= j; k++) 
+if (comparator.compare(shapes[k], max) > 0) 
+max = shapes[k];
+max_i = k;
+else if (comparator.compare(shapes[k], min) < 0) 
+min = shapes[k];
+min_i = k;		
+
+Step 3:  Shifting the min and max value after each pass until min = max / mid num
+
+swap(shapes, i, min_i);
+if (shapes[min_i] == max)
+swap(shapes, j, min_i);
+else
+swap(shapes, j, max_i);
+
+Shifting the max. The equal condition
+happens if we shifted the max to arr[min_i]
+
+Time Complexity:
+T(n) = n(n-1)/2 = n^2/2 -n/2 = O(n^2)
+
+Space Complexity: O(1)
+
